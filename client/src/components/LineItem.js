@@ -1,17 +1,17 @@
-function LineItem() {
+function LineItem({ transaction }) {
     return (
         <tr>
             <td>
                 <input type="checkbox" />
             </td>
             <td>
-                <div className="date">12/12/12</div>
+                <div className="date">{transaction.date}</div>
             </td>
             <td>
-                <div className="vendor">Bobberton's Accounting</div>
+                <div className="vendor">{transaction.entity}</div>
             </td>
             <td>
-                <div className="amount">-$22.22</div>
+                <div className="amount">{transaction.amount}</div>
             </td>
         </tr>
     )
