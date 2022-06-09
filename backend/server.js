@@ -40,7 +40,7 @@ app.post("/api/transactions/add", (req, res) => {
 //update a transaction by id
 app.put("/api/transactions/update/:id", (req, res) => {
   let connection = dbo.getDatabase();
-  let queriedTransactionID = { _id: ObjectId(req.params.id)};
+  let queriedTransactionID = { _id: ObjectId(req.params.id) };
   let updatedValues = {
     $set: {
       date: req.body.date,
@@ -48,15 +48,21 @@ app.put("/api/transactions/update/:id", (req, res) => {
       amount: req.body.amount
     },
   }
-
   connection.collection("transactions").updateOne(queriedTransactionID, updatedValues, (err, res2) => {
     if(err) throw err;
     res.json(res2);
   }); 
 });
 
-app.delete("/api", (req, res) => {
-  res.json({ message: "DELETE server!" });
+app.delete("/api/transactions/delete/:id", (req, res) => {
+  let connection = dbo.getDatabase();
+  let queriedTransactionID = { _id: ObjectId(req.params.id) };
+
+  connection.collection("transactions").deleteOne(
+    queriedTransactionID, (err, res2) => {
+      if(err) throw err;
+      res.json(res2);
+    });
 });
 
 app.listen(PORT, () => {
