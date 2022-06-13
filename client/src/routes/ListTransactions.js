@@ -20,9 +20,31 @@ function ListTransactions() {
 
     function transactionsList() {
         return transactions.map((item) => {
-            return <LineItem transaction = {item} />
+            return <LineItem key = {item._id} transaction = {item} onDelete = {deleteTransaction} />
         })
     }
+
+    const deleteTransaction = (id) => {
+        //console.log(`Delete ${id}`);
+        async function deleteOne(id) {
+            const res = await fetch(
+                `http://localhost:3000/api/transactions/delete/${id}`,
+                { method: 'DELETE' }
+            );
+            if(!res.ok) {
+                const message = `Error: ${res.statusText}`;
+                window.alert(message);
+                return;
+            }
+            console.log(`Deleted transaction ${id}`);
+            setTransactions(transactions.filter((item) => {
+                return item._id !== id;
+            }))
+            return res;
+        }
+        deleteOne(id);
+    }
+
     return (
         <div>
             <h2>Bobberton's Contracting Inc.</h2>
