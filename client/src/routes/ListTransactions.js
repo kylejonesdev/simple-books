@@ -52,14 +52,17 @@ function ListTransactions() {
             <p>Bobbert</p>
             <div className="transactions-wrapper">
                 <h2>Transaction List</h2>
-                <button type="button" name="add-new-transaction">Add New</button>
+                <a href="/new-transaction"><button type="button" name="add-new-transaction">Add New</button></a>
                 <table>
                     <thead>
                         <tr>
                             <th>Select</th>
                             <th>Date</th>
+                            <th>Payer</th>
+                            <th>Receiver</th>
                             <th>Description</th>
                             <th>Amount</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>

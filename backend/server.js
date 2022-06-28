@@ -28,8 +28,9 @@ app.get("/api/transactions", (req, res) => {
 app.post("/api/transactions/add", (req, res) => {
   let connection = dbo.getDatabase();
   let newTransaction = {
+    payer: req.body.payer,
+    receiver: req.body.receiver,    
     date: req.body.date,
-    entity: req.body.entity,
     amount: req.body.amount
   };
   connection.collection("transactions").insertOne(newTransaction, (err, res2) => {

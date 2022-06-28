@@ -10,7 +10,13 @@ function LineItem({ transaction, onDelete }) {
                 <div className="date">{transaction.date}</div>
             </td>
             <td>
-                <div className="vendor">{transaction.entity}</div>
+                <div className="payer">{transaction.payer}</div>
+            </td>
+            <td>
+                <div className="receiver">{transaction.receiver}</div>
+            </td>
+            <td>
+                <div className="description">{transaction.description}</div>
             </td>
             <td>
                 <div className="amount">{transaction.amount}</div>
