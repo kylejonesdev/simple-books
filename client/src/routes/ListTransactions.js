@@ -63,6 +63,7 @@ function ListTransactions() {
                             <th>Description</th>
                             <th>Amount</th>
                             <th>Delete</th>
+                            <th>Update</th>
                         </tr>
                     </thead>
                     <tbody>

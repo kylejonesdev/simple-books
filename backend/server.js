@@ -44,8 +44,9 @@ app.put("/api/transactions/update/:id", (req, res) => {
   let queriedTransactionID = { _id: ObjectId(req.params.id) };
   let updatedValues = {
     $set: {
+      payer: req.body.payer,
+      receiver: req.body.receiver,    
       date: req.body.date,
-      entity: req.body.entity,
       amount: req.body.amount
     },
   }
