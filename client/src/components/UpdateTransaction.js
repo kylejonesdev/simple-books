@@ -8,7 +8,7 @@ export default function UpdateTransaction({ transaction }) {
     async function handleSubmit(e) {
         e.preventDefault();
         const id = transactionState._id;
-        const putData = await fetch(`http://localhost:5000/api/transactions/update/${id}`, {
+        const putData = await fetch(`/api/transactions/update/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

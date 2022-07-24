@@ -5,7 +5,7 @@ function ListTransactions() {
     const [transactions, setTransactions] = useState([]);    
     useEffect(()=> {
         async function getTransactions() {
-            const response = await fetch('http://localhost:3000/api/transactions');
+            const response = await fetch('/api/transactions');
             if(!response.ok) {
                 const message = `An error occurred: ${response.statusText}`;
                 window.alert(message);
@@ -28,7 +28,7 @@ function ListTransactions() {
         //console.log(`Delete ${id}`);
         async function deleteOne(id) {
             const res = await fetch(
-                `http://localhost:3000/api/transactions/delete/${id}`,
+                `/api/transactions/delete/${id}`,
                 { method: 'DELETE' }
             );
             if(!res.ok) {

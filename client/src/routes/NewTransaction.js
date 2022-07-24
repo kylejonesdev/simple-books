@@ -2,7 +2,7 @@ function NewTransaction() {
     return (
         <div>
             <h2>Add New Transaction</h2>
-            <form action="http://localhost:3000/api/transactions/add" method="POST">                    
+            <form action="/api/transactions/add" method="POST">                    
                 <label>Payer
                     <input type="text" name="payer" placeholder="Payer Name" />
                     <button type="button" name="add-customer">Add Customer</button>
