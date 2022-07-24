@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require('path');
 require("dotenv").config({ path: ".env"});
 const PORT = process.env.PORT || 3000;
 
@@ -15,7 +16,6 @@ app.use(express.urlencoded({ extended: false }))
 
 //Route client requests to build folder present with Heroku deployment
 app.use(express.static(path.join(__dirname, 'build')));
-
 
 //return a list of all transactions
 app.get("/api/transactions", (req, res) => {
