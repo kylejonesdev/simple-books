@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require('path');
 require("dotenv").config({ path: ".env"});
 const PORT = process.env.PORT || 3000;
 
@@ -12,6 +13,9 @@ app.use(cors());
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+
+//Route client requests to build folder present with Heroku deployment
+app.use(express.static(path.join(__dirname, 'build')));
 
 //return a list of all transactions
 app.get("/api/transactions", (req, res) => {
@@ -66,6 +70,11 @@ app.delete("/api/transactions/delete/:id", (req, res) => {
       res.json(res2);
     });
 });
+
+//Route unknown requests to index.html in build folder
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+})
 
 app.listen(PORT, () => {
   dbo.connectToServer((err) => {if(err) console.error(err);});
